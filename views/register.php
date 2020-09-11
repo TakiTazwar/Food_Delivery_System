@@ -74,7 +74,7 @@
 				<tr>
 					<td>User Type</td>
 					<td>
-						<select id="type" onclick="validateType()">
+						<select id="type" name="usertype" onclick="validateType()">
 							<option value="customer">Customer</option>
 							<option value="deliveryman">Delivery Man</option>
 							<option value="restaurant">Restaurant</option>

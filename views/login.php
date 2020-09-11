@@ -28,7 +28,7 @@
 					<td id="usernamemsg"></td>
 				</tr>
 				<tr>
-					<td>Password</td>
+					<td>Passwordfffff</td>
 					<td><input type="password" name="password" id="password" onkeyup="validatePassword()"></td>
 					<td id="passwordmsg"></td>
 				</tr>

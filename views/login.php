@@ -2,45 +2,35 @@
 
 	if (isset($_GET['error'])) {
 		
-		if($_GET['error'] == 'null_value'){
-			echo "Username/Password field can't left empty...";
-		}
-
-		if($_GET['error'] == 'invalid_user'){
-			echo "Invalid username or Password";
-		}
-
-		if($_GET['error'] == 'invalid_request'){
-			echo "You have to login first...";
-		}
-
-	}else if(isset($_GET['success'])){
-		
-		if($_GET['success'] == 'registration_done'){
-			echo "Registration Done! Now you can login...";
+		if($_GET['error'] == 'db_error'){
+			echo "Something went wrong...please try again";
 		}
 	}
 
 ?>
 
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Login</title>
+	<script type="text/javascript" src="../assets/js/registration.js"></script>
 </head>
 <body>
 
-	<form action="../php/logCheck.php" method="post">
+	<form action="../php/logCheck.php" method="post" onsubmit="return validateAll()" >
 		<fieldset>
 			<legend>SignIn</legend>
 			<table>
 				<tr>
 					<td>Username</td>
-					<td><input type="text" name="username"></td>
+					<td><input type="text" name="username" id="username" onkeyup="validateUserName()"></td>
+					<td id="usernamemsg"></td>
 				</tr>
 				<tr>
-					<td>Password</td>
-					<td><input type="password" name="password"></td>
+					<td>Passwordfffff</td>
+					<td><input type="password" name="password" id="password" onkeyup="validatePassword()"></td>
+					<td id="passwordmsg"></td>
 				</tr>
 				<tr>
 					<td></td>

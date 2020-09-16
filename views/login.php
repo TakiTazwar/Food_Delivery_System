@@ -2,8 +2,8 @@
 
 	if (isset($_GET['error'])) {
 		
-		if($_GET['error'] == 'db_error'){
-			echo "Something went wrong...please try again";
+		if($_GET['error'] == 'yes'){
+			echo "Invalid Information";
 		}
 	}
 
@@ -14,7 +14,7 @@
 <html>
 <head>
 	<title>Login</title>
-	<script type="text/javascript" src="../assets/js/registration.js"></script>
+	<script type="text/javascript" src="../assets/js/login.js"></script>
 </head>
 <body>
 
@@ -28,7 +28,7 @@
 					<td id="usernamemsg"></td>
 				</tr>
 				<tr>
-					<td>Passwordfffff</td>
+					<td>Password</td>
 					<td><input type="password" name="password" id="password" onkeyup="validatePassword()"></td>
 					<td id="passwordmsg"></td>
 				</tr>

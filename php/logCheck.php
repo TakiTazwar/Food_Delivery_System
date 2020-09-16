@@ -1,5 +1,7 @@
 <?php
 	session_start();
+	require_once('../service/userService.php');
+	
 
 	if(isset($_POST['submit'])){
 
@@ -9,44 +11,36 @@
 		if(empty($username) || empty($password)){
 			echo "null submission";
 
-		}else{
-			
-			$conn = mysqli_connect('127.0.0.1', 'root', '', 'fooddelivermanagementsystem');
-			$sql = "select * from users where username='".$username."'&& password='".$password."'";
-			$result = mysqli_query($conn, $sql);
-			$user 	= mysqli_fetch_assoc($result);
-			
-			if(!empty($user))
+		}else{			
+			$type=validate($username,$password);
+			if($type=='deliveryman')
 			{
-				$sql = "select type from users where username='".$username."'&& password='".$password."'";
-				$result = mysqli_query($conn, $sql);
-				$user 	= mysqli_fetch_assoc($result);
-				if($user='deliveryman')
-				{
-					$_SESSION['status']  = "Ok";
-					setcookie('uname',$username, time()+3600, '/');
-					header('location: home.php');
-			    }
-			    if($user='customer')
-			    {
-			    	$_SESSION['status']  = "Ok";
-					setcookie('uname',$username, time()+3600, '/');
-					header('location: main.php');
-			    }
-			    if($user='restaurant')
-			    {
-			    	$_SESSION['status']  = "Ok";
-					setcookie('uname',$username, time()+3600, '/');
-					header('location: main.php');
-			    }
-
-			
-				
-			}
-			else
-			{
-				echo "Invalid information";
-			}
+				$_SESSION['status']  = "Ok";
+				setcookie('uname',$username, time()+3600, '/');
+				header('location: ../views/deliveryMain.php');
+		    }
+		    if($type=='customer')
+		    {
+		    	$_SESSION['status']  = "Ok";
+				setcookie('uname',$username, time()+3600, '/');
+				header('location: ../views/customerMain.php');
+		    }
+		    if($type=='restaurant')
+		    {
+		    	$_SESSION['status']  = "Ok";
+				setcookie('uname',$username, time()+3600, '/');
+				header('location: ../views/restaurantMain.php');
+		    }	
+		    if($type=='admin')
+		    {
+		    	$_SESSION['status']  = "Ok";
+				setcookie('uname',$username, time()+3600, '/');
+				header('location: ../views/adminMain.php');
+		    }
+		    if($type=='null')
+		    {
+				header('location: ../views/login.php?error=yes');
+		    }		
 		}
 
 	}else{

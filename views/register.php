@@ -2,8 +2,8 @@
 
 	if (isset($_GET['error'])) {
 		
-		if($_GET['error'] == 'db_error'){
-			echo "Something went wrong...please try again";
+		if($_GET['error'] == 'validate'){
+			echo "UserName or Email already exist";
 		}
 	}
 
@@ -48,7 +48,7 @@
 				</tr>
 				<tr>
 					<td>Email</td>
-					<td><input type="email" id="email" name="email" onkeyup="validateEmail()"></td>
+					<td><input type="text" id="email" name="email" onkeyup="validateEmail()"></td>
 					<td id="emailmsg"></td>
 				</tr>
 				<tr>

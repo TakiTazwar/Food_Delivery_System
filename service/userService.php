@@ -33,37 +33,60 @@
 	}
 
 
-	function validate($user){
+	function validate($username,$password){
+		
 		$conn = dbConnection();
-
-		if(!$conn){
-			echo "DB connection error";
-		}
-
-		$sql = "select * from users where username='{$user['username']}' and password='{$user['password']}'";
+		$sql = "select * from users where username='".$username."'&& password='".$password."'";
 		$result = mysqli_query($conn, $sql);
-		$user = mysqli_fetch_assoc($result);
+		$user 	= mysqli_fetch_assoc($result);
 
-		if(count($user) > 0 ){
-			return true;
-		}else{
-			return false;
+		if(!empty($user))
+		{
+			return $user['type'];
+		}
+		else
+		{
+			return 'null';
 		}
 	}
 
 
-	function insert($user){
+	function validateUserandEmail($user,$email){
 		$conn = dbConnection();
 
 		if(!$conn){
 			echo "DB connection error";
 		}
+		else
+		{
+			$sql= 'select * from users where username="'.$user.'"'.'or email="'.$email.'"';
+			$result = mysqli_query($conn,$sql);
+			$user = mysqli_fetch_assoc($result);	
+			if(!empty($user))
+			{
+				return 'true';
+			}
+			else
+			{
+				return 'false';
+			}
+			}
+	}
+	function insert($user){
+		$conn = dbConnection();
+		echo "Entered";
+		if(!$conn){
+			echo "DB connection error";
+		}
 
-		$sql = "insert into users values('{$user['username']}','{$user['password']}', '{$user['email']}')";
-		if(mysqli_query($conn, $sql)){
-			return "Success";
-		}else{
-			return $sql;
+		$sql1="INSERT INTO users (`username`, `name`, `password`, `dob`, `email`, `phone`, `nid`, `type`, `address`, `area`) VALUES ('".$user['username']."', '".$user['name']."', '".$user['password']."', '".$user['dob']."', '".$user['email']."', '".$user['phone']."', '".$user['nid']."', '".$user['usertype']."', '".$user['address']."', '".$user['area']."')";
+		if(mysqli_query($conn, $sql1)){
+			return 'Inserted';
+		}
+		else
+		{
+			echo $sql1;
+			return 'failed';
 		}
 	}
 
@@ -87,7 +110,8 @@
 	{
 		$conn = dbConnection();
 		$sql = "select * from users where email='{$email}'";
-		if(mysqli_query($conn, $sql)){
+		if(mysqli_query($conn, $sql))
+		{
 			$result=mysqli_query($conn, $sql);
 			$user = mysqli_fetch_assoc($result);
 			if(empty($user)){
@@ -97,9 +121,32 @@
 			{
 				return true;
 			}
-		}else{
+		}
+		else
+		{
 			return false;
 		}
+	}
 
+	function checkUser($email)
+	{
+		$conn = dbConnection();
+		$sql = "select * from users where username='{$email}'";
+		if(mysqli_query($conn, $sql))
+		{
+			$result=mysqli_query($conn, $sql);
+			$user = mysqli_fetch_assoc($result);
+			if(empty($user)){
+			return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+		else
+		{
+			return false;
+		}
 	}
 ?>

@@ -40,7 +40,7 @@ if (isset($_POST['submit']))
 			if($validUser=='false')
 			{
 				$reg=insert($user);
-				if($reg=='EnteredInserted')
+				if($reg=='Inserted')
 				{
 					header("location: ../views/login.php");
 				}

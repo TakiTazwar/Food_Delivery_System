@@ -48,7 +48,7 @@
 				</tr>
 				<tr>
 					<td>Email</td>
-					<td><input type="email" id="email" name="email" onkeyup="validateEmail()"></td>
+					<td><input type="text" id="email" name="email" onkeyup="validateEmail()"></td>
 					<td id="emailmsg"></td>
 				</tr>
 				<tr>

@@ -49,9 +49,10 @@
 	font-family: sans-serif;
 }
 .center h1{
-	color:darkgreen;
+	color:yellow;
 	font-size: 70px;
 	font-weight: bold;
 	width:900px;
 	text-align:center;
+	transition:3s;
 }

@@ -149,4 +149,39 @@
 			return false;
 		}
 	}
+
+	function getByUsername()
+	{
+		$conn = dbConnection();
+		$username=$_COOKIE['uname'];
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$sql = "select id from users where username='{$username}'";
+		$result = mysqli_query($conn, $sql);
+		$data= mysqli_fetch_assoc($result);
+		$id = $data['id'];
+		return $id;
+	}
+
+	function getallorder(){
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+
+		$id=getByUsername();
+		$date=date("Y-m-d");
+		$sql = "SELECT `id`, `customerId`, `restaurantId`, `address`, `discount`, `date`, `status`, `time` FROM `orderdetails` WHERE status='pending'and restaurantId='{$id}' and date='{$date}'";
+		$result = mysqli_query($conn, $sql);
+		$users = [];
+
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		}
+
+		return $users;
+	}
 ?>

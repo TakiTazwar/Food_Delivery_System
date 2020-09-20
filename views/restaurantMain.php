@@ -21,7 +21,7 @@ $username=$_COOKIE['uname'];
 			<a href="addpicture.php"><u>View Profile pic</u></a>
 			<hr>
 
-			<a href="restaurantPendingOrder.php"><u>Pending Order</u></a>
+			<a href="../views/restaurantPendingOrder.php"><u>Pending Order</u></a>
 	
 		<hr>
 		
@@ -30,7 +30,7 @@ $username=$_COOKIE['uname'];
 
 		<hr>
 	
-			<a href="item.html"><u>Add item</u></a>
+			<a href="../views/restaurantAddItem.php"><u>Add item</u></a>
 
 	
 		<hr>

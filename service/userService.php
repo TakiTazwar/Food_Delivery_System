@@ -165,6 +165,7 @@
 		return $id;
 	}
 
+
 	function getallorder(){
 		$conn = dbConnection();
 
@@ -184,4 +185,47 @@
 
 		return $users;
 	}
+
+	function getallItem(){
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+
+		$id=getByUsername();
+		$date=date("Y-m-d");
+		$sql = "SELECT * FROM `item` WHERE restaurantId='{$id}'";
+		$result = mysqli_query($conn, $sql);
+		$users = [];
+
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		}
+
+		return $users;
+	}
+
+
+
+
+
+	function updateAccept($user)
+	{
+		$conn = dbConnection();
+		$username=$_COOKIE['uname'];
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+		
+		$sql = "UPDATE orderdetails SET status='Accepted' WHERE id={$user['id']}";
+		if(mysqli_query($conn, $sql)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+
 ?>

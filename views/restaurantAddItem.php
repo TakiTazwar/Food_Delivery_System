@@ -18,35 +18,33 @@ else
 </head>
 <body>
 	<center>
-		<h3>Order details</h3><br>
+		<h3>Item details</h3><br>
 
 	<table border="1">
 		<tr>
 			<td>ID</td>
-			<td>Customer ID</td>
-			<td>Restaurant ID</td>
-			<td>Address</td>
+			<td>Item Name</td>
+			<td>Price</td>
 			<td>Discount</td>
-			<td>Date</td>
-			<td>Status</td>
-			<td>Time</td>
+			<td>Type</td>
+			<td>Restaurant ID</td>
+			
 			<td>Action</td>
 		</tr>
 
 		<?php  
 			
-			$users = getallorder();
+			$users = getallItem();
 			//var_dump($users);
 			for ($i=0; $i != count($users); $i++) {  ?>
 		<tr>
 			<td><?=$users[$i]['id']?></td>
-			<td><?=$users[$i]['customerId']?></td>
-			<td><?=$users[$i]['restaurantId']?></td>
-			<td><?=$users[$i]['address']?></td>
+			<td><?=$users[$i]['name']?></td>
+			<td><?=$users[$i]['price']?></td>
 			<td><?=$users[$i]['discount']?></td>
-			<td><?=$users[$i]['date']?></td>
-			<td><?=$users[$i]['status']?></td>
-			<td><?=$users[$i]['time']?></td>
+			<td><?=$users[$i]['type']?></td>
+			<td><?=$users[$i]['restaurantId']?></td>
+		
 			<td>
 				<a href="restaurantAccept.php?id=<?=$users[$i]['id']?>">Accept</a> |
 				<a href="restaurantDeny.php?id=<?=$users[$i]['id']?>">Deny</a> 

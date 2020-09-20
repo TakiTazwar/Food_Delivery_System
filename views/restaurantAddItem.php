@@ -27,8 +27,6 @@ else
 			<td>Price</td>
 			<td>Discount</td>
 			<td>Type</td>
-			<td>Restaurant ID</td>
-			
 			<td>Action</td>
 		</tr>
 
@@ -43,11 +41,11 @@ else
 			<td><?=$users[$i]['price']?></td>
 			<td><?=$users[$i]['discount']?></td>
 			<td><?=$users[$i]['type']?></td>
-			<td><?=$users[$i]['restaurantId']?></td>
+		
 		
 			<td>
-				<a href="restaurantAccept.php?id=<?=$users[$i]['id']?>">Accept</a> |
-				<a href="restaurantDeny.php?id=<?=$users[$i]['id']?>">Deny</a> 
+				<a href="../views/restaurantItemUpdate.php?id=<?=$users[$i]['id']?>">Update</a> |
+				<a href="../views/restaurantItemDelete.php?id=<?=$users[$i]['id']?>">Delete</a> 
 			</td>
 
 
@@ -59,13 +57,10 @@ else
 		
 </body>
 </html>
-     	Order id:<input type="text" name="id">
-		<input type="submit" name="submit" value="Accept Order">
-		<input type="submit" name="submit" value="Decline Order"><br>
-		<Br>
-		See accepted order list<Br><Br>
-		<a href="order.html"> <input type="button" name="a" value="Order List"> </a>
-		<Br> <Br>
+     	
+		
+		<a href="../views/restaurantItemAdd.php"> <input type="button" name="a" value="Add New Item"> </a>
+		
 
 		<a href="main.php"> <input type="button" name="a" value="back"> </a>
 	

@@ -206,6 +206,21 @@
 		return $users;
 	}
 
+	function insertItem($user){
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+
+		$sql = "insert into company values('{$user['id']}', '{$user['item_name']}','{$user['price']}', '{$user['discount']}', '{$user['type']}', '{$user['restaurantId']}')";
+		if(mysqli_query($conn, $sql)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 
 
 

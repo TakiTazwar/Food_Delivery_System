@@ -260,7 +260,8 @@
 			$request=$users[$n]['request'];
 			$itemid=$users[$n]['itemid'];
 			$specreq=$users[$n]['specreq'];
-			$sql2="INSERT INTO `orderdetails` (`id`, `deliverymanId`, `customerId`, `restaurantId`, `address`, `request`, `discount`, `date`, `status`, `time`, `area`, `specreq`, `quantity`,`itemId`) VALUES (NULL, '0', '{$customerId}', '{$restaurantId}', '{$address}', '{$request}','0', '2020-09-21', 'pending', '3', '{$area}', '{$specreq}', '{$quantity}','{$itemid}')";
+			$time=date("H:i:s");
+			$sql2="INSERT INTO `orderdetails` (`id`, `deliverymanId`, `customerId`, `restaurantId`, `address`, `request`, `discount`, `date`, `status`, `time`, `area`, `specreq`, `quantity`,`itemId`) VALUES (NULL, '0', '{$customerId}', '{$restaurantId}', '{$address}', '{$request}','0', '2020-09-21', 'pending', '{$time}', '{$area}', '{$specreq}', '{$quantity}','{$itemid}')";
 			$result = mysqli_query($conn, $sql2);
 			$n=$n+1;
 		}
@@ -269,5 +270,93 @@
 		$sql3="DELETE FROM `cart` where cart.customerId={$cusid}";
 		$result=mysqli_query($conn, $sql3);
 		return "Order Confirmed";
+	}
+
+	function customerAllOrderList()
+	{
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$cusid=getByUsername($_COOKIE['uname']);
+		$sql = "select * from orderdetails where customerId={$cusid} and status!='pending'";
+		$result = mysqli_query($conn, $sql);
+		$users = [];
+
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		}
+
+		return $users;
+	}
+	function getAllMessages($sender,$reciver)
+	{
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$cusid=getByUsername($_COOKIE['uname']);
+		$sql = "select * from contact where (sender={$sender} and reciever={$reciver}) or (sender={$reciver} and reciever={$sender})";
+		$result = mysqli_query($conn, $sql);
+		$users = [];
+
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		}
+
+		return $users;
+	}
+	function insertMessage($message,$reciver)
+	{
+		$conn = dbConnection();	
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$cusid=getByUsername($_COOKIE['uname']);
+		$date=date("Y-m-d H:i:s");
+		$sql1="INSERT INTO `contact` VALUES ('{$cusid}', '{$reciver}','{$message}','{$date}')";
+		if(mysqli_query($conn, $sql1)){
+			return 'Inserted';
+		}
+		else
+		{
+			echo $sql1;
+			return 'failed';
+		}
+	}
+
+	function getRecieverId()
+	{
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$cusid=getByUsername($_COOKIE['uname']);
+		$sql = "select DISTINCT sender from contact where reciever={$cusid} order by time";
+		$result = mysqli_query($conn, $sql);
+		$users = [];
+
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		}
+
+		return $users;
+	}
+
+	function getTypeById($id)
+	{
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+
+		$sql = "select * from users where id={$id}";
+		$result = mysqli_query($conn, $sql);
+		$row = mysqli_fetch_assoc($result);
+		return $row;
 	}
 ?>

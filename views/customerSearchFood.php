@@ -8,7 +8,7 @@ if($_SESSION['status']!="Ok")
 }
 else
 {
-	$content=searchFood("abc");
+	$content=searchFood("","");
 	////var_dump($content);
 }
 

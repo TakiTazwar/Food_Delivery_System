@@ -150,7 +150,7 @@
 		}
 	}
 
-	function searchFood($type)
+	function searchFood($type,$area)
 	{
 		$conn = dbConnection();
 
@@ -158,7 +158,7 @@
 			echo "DB connection error";
 		}
 
-		$sql = "SELECT item.id,item.name, item.price, item.discount,item.type,users.id as 'resid',users.name as 'res',users.phone,users.area FROM item join users where users.id=item.restaurantId";
+		$sql = "SELECT item.id,item.name, item.price, item.discount,item.type,users.id as 'resid',users.name as 'res',users.phone,users.area FROM item join users where users.id=item.restaurantId and item.type like '%".$type."%' and users.area like '%{$area}%'";
 		$result = mysqli_query($conn, $sql);
 		$users = [];
 

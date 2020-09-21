@@ -360,7 +360,7 @@
 		return $row;
 	}
 
-	function orderPaymentShow($value='')
+	function orderPaymentShow()
 	{
 		$conn = dbConnection();
 
@@ -369,6 +369,25 @@
 		}
 		$cusid=getByUsername($_COOKIE['uname']);
 		$sql = "select orderdetails.id,item.name,round((item.price-item.price*item.discount/100)-(item.price-item.price*item.discount/100)*orderdetails.discount/100) as 'price' ,users.name as'delivery' , users.phone from orderdetails join item join users on orderdetails.deliverymanId=users.id where orderdetails.itemId=item.id and orderdetails.status='recieved' and orderdetails.customerId={$cusid}";
+		$result = mysqli_query($conn, $sql);
+		$users = [];
+
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		}
+
+		return $users;
+	}
+
+	function orderCompleteShow()
+	{
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$cusid=getByUsername($_COOKIE['uname']);
+		$sql = "select item.name,round((item.price-item.price*item.discount/100)-(item.price-item.price*item.discount/100)*orderdetails.discount/100) as 'price',orderdetails.id,deliverymanId,orderdetails.restaurantId,item.discount,date,time,status,area,specreq,quantity from orderdetails join item on orderdetails.itemId=item.id where orderdetails.customerId={$cusid} and orderdetails.status='complete' and customerId=4 order by date and time";
 		$result = mysqli_query($conn, $sql);
 		$users = [];
 

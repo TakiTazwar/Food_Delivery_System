@@ -359,4 +359,23 @@
 		$row = mysqli_fetch_assoc($result);
 		return $row;
 	}
+
+	function orderPaymentShow($value='')
+	{
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$cusid=getByUsername($_COOKIE['uname']);
+		$sql = "select orderdetails.id,item.name,round((item.price-item.price*item.discount/100)-(item.price-item.price*item.discount/100)*orderdetails.discount/100) as 'price' ,users.name as'delivery' , users.phone from orderdetails join item join users on orderdetails.deliverymanId=users.id where orderdetails.itemId=item.id and orderdetails.status='recieved' and orderdetails.customerId={$cusid}";
+		$result = mysqli_query($conn, $sql);
+		$users = [];
+
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		}
+
+		return $users;
+	}
 ?>

@@ -149,4 +149,252 @@
 			return false;
 		}
 	}
+
+	function searchFood($type,$area)
+	{
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+
+		$sql = "SELECT item.id,item.name, item.price, item.discount,item.type,users.id as 'resid',users.name as 'res',users.phone,users.area FROM item join users where users.id=item.restaurantId and item.type like '%".$type."%' and users.area like '%{$area}%'";
+		$result = mysqli_query($conn, $sql);
+		$users = [];
+
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		}
+
+		return $users;
+	}
+
+	function searchCart()
+	{
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$cusid=getByUsername($_COOKIE['uname']);
+		$sql = "select cart.id,cart.specreq,cart.restaurantId,item.id as 'itemid', item.name,item.price,item.discount,item.type,users.phone,users.area from cart join item join users on cart.itemid=item.id and cart.restaurantId=users.id where customerId={$cusid}";
+		$result = mysqli_query($conn, $sql);
+		$users = [];
+
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		}
+
+		return $users;
+	}
+	function getByUsername($user)
+	{
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+
+		$sql = "select * from users where username='{$user}'";
+		$result = mysqli_query($conn, $sql);
+		$row = mysqli_fetch_assoc($result);
+		return $row['id'];
+	}
+
+	function insertCart($user){
+		$conn = dbConnection();	
+		if(!$conn){
+			echo "DB connection error";
+		}
+
+		$sql1="INSERT INTO `cart` VALUES ('','{$user['custid']}', '{$user['resId']}', '{$user['quantity']}', '{$user['request']}', '{$user['itemId']}','{$user['specrec']}')";
+		if(mysqli_query($conn, $sql1)){
+			return 'Inserted';
+		}
+		else
+		{
+			echo $sql1;
+			return 'failed';
+		}
+	}
+
+	function removeFromCart($resid,$itemid)
+	{
+		$cusid=getByUsername($_COOKIE['uname']);
+
+		$conn = dbConnection();	
+		if(!$conn){
+			echo "DB connection error";
+		}
+
+		$sql1="DELETE FROM cart WHERE id={$resid}";
+		if(mysqli_query($conn, $sql1)){
+			return 'Removed';
+		}
+		else
+		{
+			echo $sql1;
+			return $sql1;
+		}
+	}
+	function insertOrder($address,$area)
+	{
+		$cusid=getByUsername($_COOKIE['uname']);
+		$conn = dbConnection();	
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$sql="SELECT * FROM `cart` where customerId={$cusid}";
+		$result = mysqli_query($conn, $sql);
+		$users = [];
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		}
+		$n=0;
+		while(count($users)>$n)
+		{
+			$id=$users[$n]['id'];
+			$customerId=$users[$n]['customerId'];
+			$restaurantId=$users[$n]['restaurantId'];
+			$quantity=$users[$n]['quantity'];
+			$request=$users[$n]['request'];
+			$itemid=$users[$n]['itemid'];
+			$specreq=$users[$n]['specreq'];
+			$time=date("H:i:s");
+			$sql2="INSERT INTO `orderdetails` (`id`, `deliverymanId`, `customerId`, `restaurantId`, `address`, `request`, `discount`, `date`, `status`, `time`, `area`, `specreq`, `quantity`,`itemId`) VALUES (NULL, '0', '{$customerId}', '{$restaurantId}', '{$address}', '{$request}','0', '2020-09-21', 'pending', '{$time}', '{$area}', '{$specreq}', '{$quantity}','{$itemid}')";
+			$result = mysqli_query($conn, $sql2);
+			$n=$n+1;
+		}
+
+		$cusid=getByUsername($_COOKIE['uname']);
+		$sql3="DELETE FROM `cart` where cart.customerId={$cusid}";
+		$result=mysqli_query($conn, $sql3);
+		return "Order Confirmed";
+	}
+
+	function customerAllOrderList()
+	{
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$cusid=getByUsername($_COOKIE['uname']);
+		$sql = "select * from orderdetails where customerId={$cusid} and status!='pending'";
+		$result = mysqli_query($conn, $sql);
+		$users = [];
+
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		}
+
+		return $users;
+	}
+	function getAllMessages($sender,$reciver)
+	{
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$cusid=getByUsername($_COOKIE['uname']);
+		$sql = "select * from contact where (sender={$sender} and reciever={$reciver}) or (sender={$reciver} and reciever={$sender})";
+		$result = mysqli_query($conn, $sql);
+		$users = [];
+
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		}
+
+		return $users;
+	}
+	function insertMessage($message,$reciver)
+	{
+		$conn = dbConnection();	
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$cusid=getByUsername($_COOKIE['uname']);
+		$date=date("Y-m-d H:i:s");
+		$sql1="INSERT INTO `contact` VALUES ('{$cusid}', '{$reciver}','{$message}','{$date}')";
+		if(mysqli_query($conn, $sql1)){
+			return 'Inserted';
+		}
+		else
+		{
+			echo $sql1;
+			return 'failed';
+		}
+	}
+
+	function getRecieverId()
+	{
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$cusid=getByUsername($_COOKIE['uname']);
+		$sql = "select DISTINCT sender from contact where reciever={$cusid} order by time";
+		$result = mysqli_query($conn, $sql);
+		$users = [];
+
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		}
+
+		return $users;
+	}
+
+	function getTypeById($id)
+	{
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+
+		$sql = "select * from users where id={$id}";
+		$result = mysqli_query($conn, $sql);
+		$row = mysqli_fetch_assoc($result);
+		return $row;
+	}
+
+	function orderPaymentShow()
+	{
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$cusid=getByUsername($_COOKIE['uname']);
+		$sql = "select orderdetails.id,item.name,round((item.price-item.price*item.discount/100)-(item.price-item.price*item.discount/100)*orderdetails.discount/100) as 'price' ,users.name as'delivery' , users.phone from orderdetails join item join users on orderdetails.deliverymanId=users.id where orderdetails.itemId=item.id and orderdetails.status='recieved' and orderdetails.customerId={$cusid}";
+		$result = mysqli_query($conn, $sql);
+		$users = [];
+
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		}
+
+		return $users;
+	}
+
+	function orderCompleteShow()
+	{
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$cusid=getByUsername($_COOKIE['uname']);
+		$sql = "select item.name,round((item.price-item.price*item.discount/100)-(item.price-item.price*item.discount/100)*orderdetails.discount/100) as 'price',orderdetails.id,deliverymanId,orderdetails.restaurantId,item.discount,date,time,status,area,specreq,quantity from orderdetails join item on orderdetails.itemId=item.id where orderdetails.customerId={$cusid} and orderdetails.status='complete' and customerId=4 order by date and time";
+		$result = mysqli_query($conn, $sql);
+		$users = [];
+
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		}
+
+		return $users;
+	}
 ?>

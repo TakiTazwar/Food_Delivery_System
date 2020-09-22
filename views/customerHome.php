@@ -1,19 +1,43 @@
 <?php
 $username=$_COOKIE['uname'];
+if(isset($_GET['success']))
+{
+	echo "Edit Succesful";
+}
+
 ?>
 <!DOCTYPE html>
 <html>
 <head>
+	 <link rel="stylesheet" type="text/css" href="../assets/css/customerHome.css">
 	<title></title>
+	<header>
+        <div class="left_area" >
+            <h3> Lunch <span>Break</span> </h3>  
+          </div>
+        <nav>
+            <ul class="nav-links">
+            	<li><a href="customerSearchFood.php"> Search </a></li>
+                <li><a href="customerOrderInfo.php"> Processing </a></li>
+                <li><a href="customerRecieveOrder.php"> Payment </a></li>
+                <li><a href="customerCompleteOrder.php">  History </a></li>
+                <li><a href="customerShowReview.php"> Reviews </a></li>
+                <li><a href="custmerEditProfile.php"> Edit </a></li>
+            
+            </ul>
+        </nav>
+        <nav>
+            <ul class="nav-links">
+           
+            <div class="right_area"> 
+                <a href="../php/logout.php" class="logout_btn">Logout</a>
+            </div>
+           </ul>
+    </nav>
+    </header>
+
 </head>
 <body>
-	<h1>Welcome <?php echo " ".$username?></h1>
-	<a href="customerSearchFood.php"> Search Food </a><br><br>
-	<a href="customerOrderInfo.php"> Order Processing </a><br><br>
-	<a href="contactList.php">Recieved Messages</a><br><br>
-	<a href="customerRecieveOrder.php"> Order Payment </a><br><br>
-	<a href="customerCompleteOrder.php"> Order History </a><br><br>
-	<a href="customerEditInformation.php"> Edit Profile </a><br><br>
 
 </body>
 </html>

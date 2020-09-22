@@ -76,7 +76,7 @@
 					<td><?=$users[0]['name']?></td>
 					<td><?=$users[0]['phone']?></td>
 					<td>
-				<a href="received.php?id=<?=$users[0]['id']?>">accept</a> |
+				<a href="../php/received.php?id=<?=$users[0]['id']?>">accept</a> |
 			</td>
 				<?php } 
 				?>

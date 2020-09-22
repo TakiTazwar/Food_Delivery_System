@@ -452,4 +452,40 @@
 
 		return $users;
 	}
+
+	function customerAllInfo()
+	{
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$cusid=getByUsername($_COOKIE['uname']);
+		$sql = "select * from users where id={$cusid}";
+		$result = mysqli_query($conn, $sql);
+		$users = [];
+
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		}
+
+		return $users;
+		
+	}
+
+	function customerUpdate($user)
+	{
+		$conn = dbConnection();
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$cusid=getByUsername($_COOKIE['uname']);
+		$sql = "update users set password='{$user['password']}', name='{$user['name']}', phone='{$user['phone']}' , address='{$user['address']}', nid='{$user['nid']}', area='{$user['area']}' where id={$cusid}";
+
+		if(mysqli_query($conn, $sql)){
+			return true;
+		}else{
+			return false;
+		}
+	}
 ?>

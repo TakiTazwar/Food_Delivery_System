@@ -1,5 +1,10 @@
 <?php
 $username=$_COOKIE['uname'];
+if(isset($_GET['success']))
+{
+	echo "Edit Succesful";
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,7 +19,7 @@ $username=$_COOKIE['uname'];
 	<a href="customerRecieveOrder.php"> Order Payment </a><br><br>
 	<a href="customerCompleteOrder.php"> Order History </a><br><br>
 	<a href="customerShowReview.php"> Reviews </a><br><br>
-	<a href="customerEditInformation.php"> Edit Profile </a><br><br>
+	<a href="custmerEditProfile.php"> Edit Profile </a><br><br>
 
 </body>
 </html>

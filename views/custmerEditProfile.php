@@ -15,13 +15,40 @@ $area = $content[0]['area'];
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="../assets/css/customerEdit.css">
 	<title></title>
+	<header>
+        <div class="left_area" >
+            <h3> LUNCH <span>BREAK</span> </h3>  
+          </div>
+        <nav>
+            <ul class="nav-links">
+            	<li><a href="customerSearchFood.php"> Search </a></li>
+                <li><a href="customerOrderInfo.php"> Processing </a></li>
+                <li><a href="customerRecieveOrder.php"> Payment </a></li>
+                <li><a href="customerCompleteOrder.php">  History </a></li>
+                <li><a href="customerShowReview.php"> Reviews </a></li>
+                <li><a href="custmerEditProfile.php"> Edit </a></li>
+            
+            </ul>
+        </nav>
+        <nav>
+            <ul class="nav-links">
+           
+            <div class="right_area"> 
+                <a href="../php/logout.php" class="logout_btn">Logout</a>
+            </div>
+           </ul>
+    </nav>
+    </header>
 	<script type="text/javascript" src="../assets/js/customerEdit.js"></script>
 </head>
 <body>
 
-</body>
-</html>
+<br>
+<br>
+<br>
+<font size="5px">
 <form action="../php/customerEditProfile.php" method="post" onsubmit="return validateAll()">
 	<br/>
 	<table width="100%" cellpadding="0" cellspacing="0">
@@ -81,5 +108,7 @@ $area = $content[0]['area'];
 	<hr/>
 	<input type="submit" name="submit" value="submit" >
 	<br>
-	<a href="customerHome.php">Profile Home</a>
 </form>
+</font>
+</body>
+</html>

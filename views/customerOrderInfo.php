@@ -7,11 +7,39 @@ $content=customerAllOrderList();
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="../assets/css/customerProcess.css">
 	<title></title>
+	<header>
+        <div class="left_area" >
+            <h3> LUNCH <span>BREAK</span> </h3>  
+          </div>
+        <nav>
+            <ul class="nav-links">
+            	<li><a href="customerSearchFood.php"> Search </a></li>
+                <li><a href="customerOrderInfo.php"> Processing </a></li>
+                <li><a href="customerRecieveOrder.php"> Payment </a></li>
+                <li><a href="customerCompleteOrder.php">  History </a></li>
+                <li><a href="customerShowReview.php"> Reviews </a></li>
+                <li><a href="custmerEditProfile.php"> Edit </a></li>
+            
+            </ul>
+        </nav>
+        <nav>
+            <ul class="nav-links">
+           
+            <div class="right_area"> 
+                <a href="../php/logout.php" class="logout_btn">Logout</a>
+            </div>
+           </ul>
+    </nav>
+    </header>
 </head>
 <body>
+	<br>
+	<br>
+	<br>
 	<a href="customerHome.php"> Go Back</a>
-
+	<font size="5px" color="dark">
 	<table>
 	<tr>
 		<td>
@@ -76,6 +104,6 @@ $content=customerAllOrderList();
 		</td>
 	</tr>
 	</table>
-
+</font>
 </body>
 </html>

@@ -6,7 +6,7 @@ require_once('../php/session.php');
 if (isset($_GET['id'])) {
 		$id=$_GET['id'];
 		
-		$user = updateAccept($id);
+		$user = updateDeny($id);
 	     header("location: ../views/restaurantPendingOrder.php");	
 
 	}else{

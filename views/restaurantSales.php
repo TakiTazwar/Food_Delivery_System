@@ -18,34 +18,39 @@ else
 </head>
 <body>
 	<center>
-		<h3>Item details</h3><br>
+		<h3>Add Discount to the Order</h3><br>
 
 	<table border="1">
 		<tr>
 			<td>ID</td>
-			<td>Item Name</td>
-			<td>Price</td>
+			<td>Customer ID</td>
+			<td>Restaurant ID</td>
+			<td>Address</td>
 			<td>Discount</td>
-			<td>Type</td>
+			<td>Date</td>
+			<td>Status</td>
+			<td>Time</td>
 			<td>Action</td>
 		</tr>
 
 		<?php  
 			
-			$users = getallItem();
+			$users = getallDoneorder();
 			//var_dump($users);
 			for ($i=0; $i != count($users); $i++) {  ?>
 		<tr>
 			<td><?=$users[$i]['id']?></td>
-			<td><?=$users[$i]['name']?></td>
-			<td><?=$users[$i]['price']?></td>
+			<td><?=$users[$i]['customerId']?></td>
+			<td><?=$users[$i]['restaurantId']?></td>
+			<td><?=$users[$i]['address']?></td>
 			<td><?=$users[$i]['discount']?></td>
-			<td><?=$users[$i]['type']?></td>
-		
-		
+			<td><?=$users[$i]['date']?></td>
+			<td><?=$users[$i]['status']?></td>
+			<td><?=$users[$i]['time']?></td>
 			<td>
-				<a href="../views/restaurantItemUpdate.php?id=<?=$users[$i]['id']?>">Update</a> |
-				<a href="../views/restaurantItemDelete.php?id=<?=$users[$i]['id']?>">Delete</a> 
+				<a href="../views/restaurantDiscount.php?id=<?=$users[$i]['id']?>">Add Discount</a> |
+				<a href="../php/restaurantSales.php?id=<?=$users[$i]['id']?>">Sell</a> 
+				
 			</td>
 
 
@@ -57,10 +62,7 @@ else
 		
 </body>
 </html>
-     	
-		
-		<a href="../views/restaurantItemAdd.php"> <input type="button" name="a" value="Add New Item"> </a>
-		
+     
 
 		<a href="../views/restaurantMain.php"> <input type="button" name="a" value="back"> </a>
 	

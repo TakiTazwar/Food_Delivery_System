@@ -25,7 +25,7 @@ $username=$_COOKIE['uname'];
 	
 		<hr>
 		
-			<a href="order.html"><u>Order status</u></a>
+			<a href="../views/restaurantOrderStatus.php"><u>Order status</u></a>
 		
 
 		<hr>
@@ -39,11 +39,11 @@ $username=$_COOKIE['uname'];
 		
 		<hr>
 	
-			<a href="discount.html"><u>Add Discount</u></a>
+			<a href="restaurantAddDiscount.php"><u>Add Discount</u></a>
 
 			<hr>
 	
-			<a href="sales.html"><u>Sales</u></a>
+			<a href="../views/restaurantSales.php"><u>Sales</u></a>
 
 			<hr>
 	
@@ -58,6 +58,10 @@ $username=$_COOKIE['uname'];
 		<hr>
 	
 			<a href="reviews.html"><u>Reviews</u></a>
+
+			<hr>
+
+			<a href="../views/restaurantOrderHistory.php"><u>Order History</u></a>
 
 			<hr>
 	

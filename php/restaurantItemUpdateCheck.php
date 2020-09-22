@@ -1,12 +1,14 @@
 <?php 
 	require_once('../php/session_header.php');
 	require_once('../service/userService.php');
-	if(isset($_POST['submit']))
+
+
+if(isset($_POST['submit']))
 	{
 
 		if(empty($_POST['item_name']) || empty($_POST['price']) || empty($_POST['discount']) || empty($_POST['type']))
 		{
-			header('location: ../views/restaurantItemAdd.php?error=null_value');
+			header('location: ../views/restaurantItemUpdate.php?error=null_value');
 		}
 		else
 		{
@@ -17,7 +19,7 @@
 			$type = $_POST['type'];
 			$restaurantId = getByUsername($_SESSION['uname']);
 			
-			$company = [
+			$user = [
 				'id'=> $id,
 				'item_name'=> $item_name,
 				'price'=> $price,
@@ -26,8 +28,8 @@
 				
 				'restaurantId'=> $restaurantId
 			];
-			var_dump($company);
-			$status = insertItem($company);
+			//var_dump($company);
+			$status = updateItem($user);
 			echo $status;
 
 			if(true){
@@ -39,4 +41,6 @@
 		}
 	}
 
-?>
+
+
+	?>

@@ -18,7 +18,7 @@ else
 </head>
 <body>
 	<center>
-		<h3>Order details</h3><br>
+		<h3>Order History</h3><br>
 
 	<table border="1">
 		<tr>
@@ -30,12 +30,12 @@ else
 			<td>Date</td>
 			<td>Status</td>
 			<td>Time</td>
-			<td>Action</td>
+			<!--td>Action</td-->
 		</tr>
 
 		<?php  
 			
-			$users = getallorder();
+			$users = getallorderHistory();
 			//var_dump($users);
 			for ($i=0; $i != count($users); $i++) {  ?>
 		<tr>
@@ -47,10 +47,11 @@ else
 			<td><?=$users[$i]['date']?></td>
 			<td><?=$users[$i]['status']?></td>
 			<td><?=$users[$i]['time']?></td>
-			<td>
-				<a href="../php/restaurantAccept.php?id=<?=$users[$i]['id']?>">Accept</a> |
-				<a href="../php/restaurantDeny.php?id=<?=$users[$i]['id']?>">Decline</a> 
-			</td>
+			<!--td>
+				<a href="../php/restaurantProc.php?id=<?=$users[$i]['id']?>">Processing</a> |
+				<a href="../php/restaurantCook.php?id=<?=$users[$i]['id']?>">Cooking</a> |
+				<a href="../php/restaurantDone.php?id=<?=$users[$i]['id']?>">Done</a> 
+			</td-->
 
 
 		</tr>

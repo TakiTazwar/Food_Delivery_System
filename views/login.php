@@ -15,6 +15,7 @@
 <head>
 	<title>Login</title>
 	<script type="text/javascript" src="../assets/js/login.js"></script>
+ <link rel="stylesheet" type="text/css" href="../assets/css/deliCommon.css">
 </head>
 <body>
 
@@ -34,7 +35,7 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="submit" name="submit" value="Submit"></td>
+					<td><input type="submit" name="submit" value="LogIn"></td>
 				</tr>
 			</table>
 		</fieldset>

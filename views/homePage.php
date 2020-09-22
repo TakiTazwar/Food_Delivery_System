@@ -8,7 +8,7 @@
 <body>
 	<div class="wrapper">
 		<nav class="navbar">
-			<img class="logo" src="logo.png">
+			<img class="logo" src="../assets/css/logo.png">
 			<ul>
 				<li><a class="active" href="homePage.php">Home</a></li>
 				<li><a href="login.php">SignIN</a></li>

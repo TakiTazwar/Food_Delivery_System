@@ -17,6 +17,7 @@
 			{
 				$_SESSION['status']  = "Ok";
 				setcookie('uname',$username, time()+3600, '/');
+
 				header('location: ../views/deliverymanMain.php');
 		    }
 		    if($type=='customer')
@@ -44,7 +45,8 @@
 		}
 
 	}else{
-		header("location: login.html");
+		header("location: login.php");
 	}
+	echo $type;
 
 ?>

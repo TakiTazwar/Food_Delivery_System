@@ -8,35 +8,33 @@
   </head>
   <body>
     <nav>
-      <label class="logo">deliveryman name</label>
+      <label class="logo"><?php
+session_start();
+if ($_SESSION['status']=="Ok") 
+{
+echo $_COOKIE['uname'];
+}
+
+?></label>
    		<ul>
 			<li><a class="active" href="#">Home</a></li>
-			<li><a href="#">Order
-	          <i class="fas fa-caret-down"></i>
-	       		</a>
-	      		<ul>
-					<li><a href="#">Food</a></li>
-					<li><a href="#">Medicine</a></li>
-				</ul>
-			</li>
-			<li><a href="#">Status
+			<li><a href="../php/searchArea.php">Order
+			<li><a href="../views/delicontact.php">Contact Customer</a></li>
+			<li><a href="#">Other
 	          <i class="fas fa-caret-down"></i>
 	        	</a>
 	          	<ul>
-					<li><a href="#">avaible</a></li>
-					<li><a href="#">busy</a></li>
-					<li><a href="#">Other</a></li>
+					<li><a href="deliReview.php">Reviews</a></li>
+					<li><a href="../php/searchDate.php">History</a></li>
+					<li><a href="deliProfile.php">Profile</a></li>
 				</ul>
 			</li>
-			<li><a href="#">Contact Us</a></li>
-			<li><a href="#">Feedback</a></li>
-			<li><a href="#">History</a></li>
-			<li><a href="#">Profile</a></li>
+			<li><a href="login.php">Sign Out</a></li>
 		</ul>
 	</nav>
 	<div class="wrapper">
 		<div class="center">
-				<h1>WELCOME</h1>
+				<h1>WELCOME </h1>
 
 		</div>
 	</div>

@@ -12,6 +12,7 @@ if(isset($_POST['submit']))
 	if($insert=="Inserted")
 	{
 		header("location: ../php/contactAdmin.php?".$type."=".$reciver);
+
 	}
 }
 

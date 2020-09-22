@@ -24,7 +24,7 @@
 		    {
 		    	$_SESSION['status']  = "Ok";
 				setcookie('uname',$username, time()+3600, '/');
-				header('location: ../views/customerMain.php');
+				header('location: ../views/customerHome.php');
 		    }
 		    if($type=='restaurant')
 		    {

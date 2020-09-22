@@ -25,3 +25,17 @@ function reloadPage()
 	}
 	document.getElementById('show').innerHTML = "";	
 }
+
+function validateMessage() {
+	var message = document.getElementById('message').value;
+	if(message!="")
+	{
+		return true;
+	}
+	else
+	{
+		document.getElementById('show').innerHTML="Message Cannot be Empty";
+		return false;
+	}
+	
+}

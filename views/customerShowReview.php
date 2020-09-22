@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-	 <link rel="stylesheet" type="text/css" href="../assets/css/customerPay.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/customerProcess.css">
 	<title></title>
 	<header>
         <div class="left_area" >
@@ -28,42 +27,13 @@
            </ul>
     </nav>
     </header>
-
 </head>
 <body>
-<br>
-<font size="5px">
-<?php 
-require_once('../service/userService.php');
-require_once('../php/session.php');
+	<br>
+	<br>
+	<br>
+	<a href="customerReviewBlog.php"><font size="300px">Food Blog</font> </a><br><br>
+	<a href="customeOwnReview.php"><font size="300px">My Reviews</font></a>
 
-
-$content=customerOrderPaymentShow();
-echo "<table border=1>
-	<tr>
-		<td>Order Id</td>
-		<td>Item Name</td>
-		<td>Total Payment</td>
-		<td>Delivery Man</td>
-		<td>Phone</td>
-	</tr>";
-	$n=0;
-	while(count($content)>$n)
-	{
-		echo "<tr>
-				<td>".$content[$n]['id']."</td>
-				<td>".$content[$n]['name']."</td>>
-				<td>".$content[$n]['price']."</td>
-				<td>".$content[$n]['delivery']."</td>
-				<td>".$content[$n]['phone']."</td>
-			</tr>";
-		$n=$n+1;
-	}
-
-	echo "</table>";
-
-?>
-</font>
-<a href="customerHome.php">GO BACK</a>
 </body>
 </html>

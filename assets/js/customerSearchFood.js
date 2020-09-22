@@ -36,12 +36,14 @@ function add(itemid,resid) {
 	var spec='specreq'+itemid;
 	var specrec=document.getElementById(spec).value;
 
-	var xhttp = new XMLHttpRequest();
-	xhttp.open('POST', '../php/customerAddCart.php', true);
-	xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-	xhttp.send('itemId='+itemid+'&resid='+resid+'&quantity='+quantity+'&request='+request+'&specrec='+specrec);
-	xhttp.onreadystatechange = function ()
+	if(quantity!="")
 	{
+			var xhttp = new XMLHttpRequest();
+		xhttp.open('POST', '../php/customerAddCart.php', true);
+		xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+		xhttp.send('itemId='+itemid+'&resid='+resid+'&quantity='+quantity+'&request='+request+'&specrec='+specrec);
+		xhttp.onreadystatechange = function ()
+		{
 		if(this.readyState == 4 && this.status == 200)
 		{
 			if(this.responseText != "")
@@ -55,5 +57,10 @@ function add(itemid,resid) {
 			}
 			
 		}	
+		}
+	}
+	else
+	{
+		document.getElementById('insert').innerHTML = "Quantity cannot be empty";
 	}
 }

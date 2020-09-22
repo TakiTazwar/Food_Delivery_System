@@ -397,4 +397,59 @@
 
 		return $users;
 	}
+
+	function insertReview($reciever,$orderid,$message){
+		$conn = dbConnection();
+		if(!$conn){
+			echo "DB connection error";
+			return 'failed';
+		}
+		$cusid=getByUsername($_COOKIE['uname']);
+		$sql1="INSERT INTO `review` (`id`, `orderId`, `userId`, `customerId`, `message`) VALUES (NULL, '{$orderid}', '{$reciever}', '{$cusid}', '{$message}');";
+		if(mysqli_query($conn, $sql1)){
+			return 'Inserted';
+		}
+		else
+		{
+			echo $sql1;
+			return 'failed';
+		}
+	}
+
+	function orderReviewShow()
+	{
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$sql = "select item.name as 'itemname',item.type,users.name,users.area,review.message,orderdetails.date,users.phone from orderdetails join review join users join item on orderdetails.id=review.orderId and orderdetails.restaurantId=review.userId and users.id=orderdetails.restaurantId and orderdetails.itemId=item.id where orderdetails.status='complete' order by date desc";
+		$result = mysqli_query($conn, $sql);
+		$users = [];
+
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		}
+
+		return $users;
+	}
+
+	function ownReviewShow()
+	{
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$cusid=getByUsername($_COOKIE['uname']);
+		$sql = "select item.name as 'itemname',item.type as 'itemtype',users.name,users.area,users.phone,review.message,orderdetails.date,users.type from orderdetails join review join users join item on orderdetails.id=review.orderId and review.userId=users.id and orderdetails.itemId=item.id where orderdetails.customerId={$cusid}";
+		$result = mysqli_query($conn, $sql);
+		$users = [];
+
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		}
+
+		return $users;
+	}
 ?>

@@ -43,8 +43,8 @@ echo '<table border=1>
 				<td>".$content[$n]['area']."</td>
 				<td>".$content[$n]['specreq']."</td>
 				<td>".$content[$n]['quantity']."</td>
-				<td>".'<a href="customerReview.php?delivery='.$content[$n]['deliverymanId'].'"> Review Delivery Man</a>'."</td>
-				<td>".'<a href="customerReview.php?restaurant='.$content[$n]['restaurantId'].'"> Review Restaurant</a>'."</td>
+				<td>".'<a href="customerReview.php?order='.$content[$n]['id'].'&delivery='.$content[$n]['deliverymanId'].'"> Review Delivery Man</a>'."</td>
+				<td>".'<a href="customerReview.php?order='.$content[$n]['id'].'&restaurant='.$content[$n]['restaurantId'].'"> Review Restaurant</a>'."</td>
 			</tr>";
 		$n=$n+1;
 	}

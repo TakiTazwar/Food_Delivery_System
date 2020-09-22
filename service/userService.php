@@ -280,7 +280,7 @@
 			echo "DB connection error";
 		}
 		$cusid=getByUsername($_COOKIE['uname']);
-		$sql = "select * from orderdetails where customerId={$cusid} and status!='pending'";
+		$sql = "select * from orderdetails where customerId={$cusid} and status!='complete'";
 		$result = mysqli_query($conn, $sql);
 		$users = [];
 
@@ -360,7 +360,7 @@
 		return $row;
 	}
 
-	function orderPaymentShow()
+	function customerOrderPaymentShow()
 	{
 		$conn = dbConnection();
 
@@ -368,7 +368,7 @@
 			echo "DB connection error";
 		}
 		$cusid=getByUsername($_COOKIE['uname']);
-		$sql = "select orderdetails.id,item.name,round((item.price-item.price*item.discount/100)-(item.price-item.price*item.discount/100)*orderdetails.discount/100) as 'price' ,users.name as'delivery' , users.phone from orderdetails join item join users on orderdetails.deliverymanId=users.id where orderdetails.itemId=item.id and orderdetails.status='recieved' and orderdetails.customerId={$cusid}";
+		$sql = "select orderdetails.id,item.name,round((item.price-item.price*item.discount/100)-(item.price-item.price*item.discount/100)*orderdetails.discount/100) as 'price' ,users.name as'delivery' , users.phone from orderdetails join item join users on orderdetails.deliverymanId=users.id where orderdetails.itemId=item.id and orderdetails.status='recieved' and orderdetails.customerId={$cusid} group by orderdetails.id";
 		$result = mysqli_query($conn, $sql);
 		$users = [];
 
@@ -387,7 +387,7 @@
 			echo "DB connection error";
 		}
 		$cusid=getByUsername($_COOKIE['uname']);
-		$sql = "select item.name,round((item.price-item.price*item.discount/100)-(item.price-item.price*item.discount/100)*orderdetails.discount/100) as 'price',orderdetails.id,deliverymanId,orderdetails.restaurantId,item.discount,date,time,status,area,specreq,quantity from orderdetails join item on orderdetails.itemId=item.id where orderdetails.customerId={$cusid} and orderdetails.status='complete' and customerId=4 order by date and time";
+		$sql = "select item.name,round((item.price-item.price*item.discount/100)-(item.price-item.price*item.discount/100)*orderdetails.discount/100) as 'price',orderdetails.id,deliverymanId,orderdetails.restaurantId,item.discount,date,time,status,area,specreq,quantity from orderdetails join item on orderdetails.itemId=item.id where orderdetails.customerId={$cusid} and orderdetails.status='complete' order by date and time";
 		$result = mysqli_query($conn, $sql);
 		$users = [];
 

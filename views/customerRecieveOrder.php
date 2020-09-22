@@ -10,7 +10,7 @@ require_once('../service/userService.php');
 require_once('../php/session.php');
 
 
-$content=orderPaymentShow();
+$content=customerOrderPaymentShow();
 echo "<table border=1>
 	<tr>
 		<td>Order Id</td>

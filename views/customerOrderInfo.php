@@ -53,9 +53,16 @@ $content=customerAllOrderList();
 								<td>".$content[$n]['area']."</td>
 								<td>".$content[$n]['specreq']."</td>
 								<td>".$content[$n]['quantity']."</td>
-								<td>".$content[$n]['itemId']."</td>
-								<td>".'<a href="customerContact.php?delivery='.$content[$n]['deliverymanId'].'"> Contact Delivery Man</a>'."</td>
-								<td>".'<a href="customerContact.php?restaurant='.$content[$n]['restaurantId'].'"> Contact Restaurant</a>'."</td>
+								<td>".$content[$n]['itemId']."</td>";
+								if($content[$n]['deliverymanId']!='0')
+								{
+									echo "<td>".'<a href="customerContact.php?delivery='.$content[$n]['deliverymanId'].'"> Contact Delivery Man</a>'."</td>";
+								}
+								else
+								{
+									echo "<td></td>";
+								}
+								echo "<td>".'<a href="customerContact.php?restaurant='.$content[$n]['restaurantId'].'"> Contact Restaurant</a>'."</td>
 							</tr>";
 						$n=$n+1;
 					}

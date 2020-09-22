@@ -48,12 +48,13 @@ if(!empty($messages))
 }
 else
 {
-	echo "WRITE A MESSAGE";
+	echo "WRITE A MESSAGE<br>";
 }
 echo '<a href="customerContact.php?'.$type.'='.$reciver.'">RELOAD MESSAGE</a>';
 ?>
-<form action="../php/sendMessage.php" method="POST">
-	ENTER YOUR MESSAGE:<input type="text" name="message"> 
+<form action="../php/sendMessage.php" method="POST" onsubmit="return validateMessage()">
+	ENTER YOUR MESSAGE:<input type="text" name="message" id="message"> 
+	<div id="show"></div>
 	<input type="submit" name="submit" value="Send">
 	<input type="hidden" name="reciver" value=<?php echo '"'.$reciver.'"'; ?>>
 	<input type="hidden" name="type" value=<?php echo '"'.$type.'"'; ?>>

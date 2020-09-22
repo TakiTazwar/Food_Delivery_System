@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html>
+ <link rel="stylesheet" href="../assets/css/deliCommon.css">
 <head>
 </head>
 <body>

@@ -11,34 +11,16 @@
 
 
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
 <head>
-	<meta charset="utf-8">
 	<title>Login</title>
-	<link rel="stylesheet" href="../assets/css/logIn.css">
 	<script type="text/javascript" src="../assets/js/login.js"></script>
+ <link rel="stylesheet" type="text/css" href="../assets/css/deliCommon.css">
 </head>
 <body>
-	<div class="container">
-		<header>Login Form</header>
-
 
 	<form action="../php/logCheck.php" method="post" onsubmit="return validateAll()" >
-		<div class="input-field">
-			<input type="text" name="username" id="username" onkeyup="validateUserName()">
-
-			<label>Username</label>
-		</div class="input-field">
-		<input type="password" name="password" id="password" onkeyup="validatePassword()">
-		<label>Password</label>
-		<div>
-			<div class="button">
-				<div class="inner"></div>
-				<button>SignIn</button>
-			</div>
-			
-		</div>
-	<fieldset>
+		<fieldset>
 			<legend>SignIn</legend>
 			<table>
 				<tr>
@@ -53,12 +35,10 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="submit" name="submit" value="Submit"></td>
+					<td><input type="submit" name="submit" value="LogIn"></td>
 				</tr>
 			</table>
 		</fieldset>
-
 	</form>
-</div>
 </body>
 </html>

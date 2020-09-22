@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title></title>
+	 <link rel="stylesheet" href="../assets/css/deliCommon.css">
 </head>
 <body>
 <form action="deliHistory.php" method="post" >

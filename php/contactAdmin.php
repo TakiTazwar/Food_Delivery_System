@@ -2,7 +2,8 @@
 <html>
 <head>
     <title></title>
-    <script type="text/javascript" src="../assets/js/customerContact.js"></script>
+    <script type="text/javascript" src="../assets/js/contactAdmin.js"></script>
+     <link rel="stylesheet" href="../assets/css/deliCommon.css">
 </head>
 <body>
 <div>
@@ -13,10 +14,10 @@ require_once('../php/session.php');
 $sender=getDeliID();
 $reciver="";
 $type="";
-if(isset($_GET['delivery']))
+if(isset($_GET['customer']))
 {
-    $reciver=$_GET['delivery'];
-    $type="delivery";
+    $reciver=$_GET['customer'];
+    $type="customer";
 
 }
 elseif(isset($_GET['restaurant']))
@@ -50,7 +51,7 @@ else
 {
     echo "WRITE A MESSAGE<br>";
 }
-echo '<a href="customerContact.php?'.$type.'='.$reciver.'">RELOAD MESSAGE</a>';
+echo '<a href="contactAdmin.php?'.$type.'='.$reciver.'">RELOAD MESSAGE</a>';
 ?>
 <form action="../php/sendMessage.php" method="POST" onsubmit="return validateMessage()">
     ENTER YOUR MESSAGE:<input type="text" name="message" id="message"> 

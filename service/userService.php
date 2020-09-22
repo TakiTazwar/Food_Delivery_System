@@ -603,6 +603,26 @@
 			return false;
 		}
 	}
+	function deliReviewShow()
+	{
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$cusid=getByUsername($_COOKIE['uname']);
+		$sql = "select item.name as 'itemname',item.type as 'itemtype',users.name,users.area,users.phone,review.message,orderdetails.date,users.type from orderdetails join review join users join item on orderdetails.id=review.orderId and review.customerId=users.id and orderdetails.itemId=item.id where review.userId={$cusid}";
+		$result = mysqli_query($conn, $sql);
+		$users = [];
+
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		}
+
+		return $users;
+	}
+
+	
 	/*function getreply($msg)
 	{
 

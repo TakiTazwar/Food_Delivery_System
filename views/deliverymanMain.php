@@ -19,17 +19,16 @@ echo $_COOKIE['uname'];
    		<ul>
 			<li><a class="active" href="#">Home</a></li>
 			<li><a href="../php/searchArea.php">Order
-			<li><a href="../php/contactAdmin.php">Contact Us</a></li>
+			<li><a href="../views/delicontact.php">Contact Customer</a></li>
 			<li><a href="#">Other
 	          <i class="fas fa-caret-down"></i>
 	        	</a>
 	          	<ul>
-					<li><a href="#">Reviews</a></li>
+					<li><a href="deliReview.php">Reviews</a></li>
 					<li><a href="../php/searchDate.php">History</a></li>
-					<li><a href="#">Profile</a></li>
+					<li><a href="deliProfile.php">Profile</a></li>
 				</ul>
 			</li>
-			<li><a href="../php/contactAdmin.php">Contact Us</a></li>
 			<li><a href="login.php">Sign Out</a></li>
 		</ul>
 	</nav>

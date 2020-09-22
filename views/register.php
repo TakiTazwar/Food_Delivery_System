@@ -14,6 +14,7 @@
 <head>
 	<title>SignUp</title>
 	<script type="text/javascript" src="../assets/js/registration.js"></script>
+	 <link rel="stylesheet" href="../assets/css/deliCommon.css">
 </head>
 <body>
 

@@ -14,6 +14,7 @@
 <html>
 <head>
 	<title>Order</title>
+	 <link rel="stylesheet" href="../assets/css/deliCommon.css">
 </head>
 <body>
 	<h1>Choose order</h1>

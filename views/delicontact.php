@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title></title>
+	 <link rel="stylesheet" href="../assets/css/deliCommon.css">
 </head>
 <body>
 	<h1>Recieve Message</h1>

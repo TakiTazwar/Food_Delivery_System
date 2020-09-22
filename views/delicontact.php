@@ -29,7 +29,7 @@ if(!empty($recieved))
 }
 else
 {
-	echo "You don't have any recieved message";
+	echo "don't have any message to see";
 }
 ?>
 

@@ -4,7 +4,7 @@
 	margin: 0;
 }
 .wrapper{
-	background: url(homePage.jpg) no-repeat;
+	background: url(../pic/homePage.jpg) no-repeat;
 	background-size: cover;
 	height: 100vh;
 }

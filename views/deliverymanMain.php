@@ -18,14 +18,14 @@ echo $_COOKIE['uname'];
 ?></label>
    		<ul>
 			<li><a class="active" href="#">Home</a></li>
-			<li><a href="../php/searchArea.php">Order
-			<li><a href="../views/delicontact.php">Contact Customer</a></li>
+			<li><a href="searchArea.php">Order
+			<li><a href="delicontact.php">Contact Customer</a></li>
 			<li><a href="#">Other
 	          <i class="fas fa-caret-down"></i>
 	        	</a>
 	          	<ul>
 					<li><a href="deliReview.php">Reviews</a></li>
-					<li><a href="../php/searchDate.php">History</a></li>
+					<li><a href="searchDate.php">History</a></li>
 					<li><a href="deliProfile.php">Profile</a></li>
 				</ul>
 			</li>

@@ -23,13 +23,14 @@ $area = $content[0]['area'];
           </div>
         <nav>
             <ul class="nav-links">
+            	<li><a href="customerHome.php"> Home </a></li>
             	<li><a href="customerSearchFood.php"> Search </a></li>
                 <li><a href="customerOrderInfo.php"> Processing </a></li>
                 <li><a href="customerRecieveOrder.php"> Payment </a></li>
                 <li><a href="customerCompleteOrder.php">  History </a></li>
                 <li><a href="customerShowReview.php"> Reviews </a></li>
+                <li><a href="contactList.php"> Messages </a></li>
                 <li><a href="custmerEditProfile.php"> Edit </a></li>
-            
             </ul>
         </nav>
         <nav>

@@ -46,6 +46,8 @@ if(isset($_POST['submit'])){
 				</tr>
 
 			</table>
-			<a href="../php/searchDate.php">search Again</a>
+			<a href="../views/searchDate.php">search Again</a>
+
+			<a href="deliverymanMain.php">GO BACK</a>
 </body>
 </html>

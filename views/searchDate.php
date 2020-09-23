@@ -9,4 +9,5 @@
 			Select a date
 			<input type="Date" id="hdate" name="hdate">
 			<input type="submit" name="submit" value="Search">
+			<a href="deliverymanMain.php">GO BACK</a>
 </form>

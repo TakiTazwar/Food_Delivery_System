@@ -88,3 +88,4 @@
 	</table>
 </body>
 </html>
+<a href="../views/deliPayment.php">Daily Payment</a>

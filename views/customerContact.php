@@ -1,39 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="../assets/css/customerEdit.css">
 	<title></title>
-	<header>
-        <div class="left_area" >
-            <h3> LUNCH <span>BREAK</span> </h3>  
-          </div>
-        <nav>
-            <ul class="nav-links">
-            	<li><a href="customerSearchFood.php"> Search </a></li>
-                <li><a href="customerOrderInfo.php"> Processing </a></li>
-                <li><a href="customerRecieveOrder.php"> Payment </a></li>
-                <li><a href="customerCompleteOrder.php">  History </a></li>
-                <li><a href="customerShowReview.php"> Reviews </a></li>
-                <li><a href="custmerEditProfile.php"> Edit </a></li>
-            
-            </ul>
-        </nav>
-        <nav>
-            <ul class="nav-links">
-           
-            <div class="right_area"> 
-                <a href="../php/logout.php" class="logout_btn">Logout</a>
-            </div>
-           </ul>
-    </nav>
-    </header>
 	<script type="text/javascript" src="../assets/js/customerContact.js"></script>
 </head>
 <body>
 	<font size="5px">
 <div>
 	<br>
-
+<a href="customerHome.php">Go Back</a>
 <?php
 require_once('../service/userService.php');
 require_once('../php/session.php');
@@ -79,7 +54,7 @@ else
 }
 echo '<a href="customerContact.php?'.$type.'='.$reciver.'">RELOAD MESSAGE</a>';
 ?>
-<form action="../php/sendMessage.php" method="POST" onsubmit="return validateMessage()">
+<form action="../php/customerSendMessage.php" method="POST" onsubmit="return validateMessage()">
 	ENTER YOUR MESSAGE:<input type="text" name="message" id="message"> 
 	<div id="show"></div>
 	<input type="submit" name="submit" value="Send">

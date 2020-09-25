@@ -12,6 +12,7 @@ require_once('../php/session.php');
 
 
 $content=orderPaymentShow();
+//var_dump($content);
 echo "<table border=1>
 	<tr>
 		<td>Order Id</td>

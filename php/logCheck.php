@@ -14,8 +14,7 @@
 		}else{			
 			$type=validate($username,$password);
 			if($type=='deliveryman')
-			{
-				$_SESSION['status']  = "Ok";
+			{$_SESSION['status']  = "Ok";
 				setcookie('uname',$username, time()+3600, '/');
 
 				header('location: ../views/deliverymanMain.php');
@@ -45,8 +44,7 @@
 		}
 
 	}else{
-		header("location: login.php");
+		header("location: login.html");
 	}
-	echo $type;
 
 ?>

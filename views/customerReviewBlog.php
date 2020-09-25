@@ -30,6 +30,10 @@
     </header>
 </head>
 <body>
+    <br>
+    <br>
+    <br>
+    <br>
 	<H1>WELCOME TO FOOD BLOG</H1>
 <a href="customerHome.php">GO BACK</a>
 <?php 
@@ -37,7 +41,7 @@ require_once('../service/userService.php');
 require_once('../php/session.php');
 
 
-$content=orderReviewShow();
+$content=customerOrderReviewShow();
 $n=0;
 while(count($content)>$n)
 {

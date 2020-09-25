@@ -54,7 +54,7 @@ else
 }
 echo '<a href="customerContact.php?'.$type.'='.$reciver.'">RELOAD MESSAGE</a>';
 ?>
-<form action="../php/sendMessage.php" method="POST" onsubmit="return validateMessage()">
+<form action="../php/customerSendMessage.php" method="POST" onsubmit="return validateMessage()">
 	ENTER YOUR MESSAGE:<input type="text" name="message" id="message"> 
 	<div id="show"></div>
 	<input type="submit" name="submit" value="Send">

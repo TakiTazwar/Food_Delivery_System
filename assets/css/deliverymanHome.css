@@ -67,7 +67,7 @@ nav ul ul li a{
 }
 
 .wrapper{
-	background: url(deliverymanHome.jpg) no-repeat;
+	background: url(../pic/deliverymanHome.jpg) no-repeat;
 	background-size: cover;
 	height: 100vh;
 }

@@ -11,7 +11,7 @@ if(isset($_POST['submit']))
 	$insert=insertMessage($message,$reciver);
 	if($insert=="Inserted")
 	{
-		header("location: ../php/contactAdmin.php?".$type."=".$reciver);
+		header("location: ../views/customerContact.php?".$type."=".$reciver);
 	}
 }
 

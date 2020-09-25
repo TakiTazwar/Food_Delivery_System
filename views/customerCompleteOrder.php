@@ -33,6 +33,8 @@
 </head>
 <body>
 <br>
+<br>
+<br>
 <font size="5px">
 <?php 
 require_once('../service/userService.php');
